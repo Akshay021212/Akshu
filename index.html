@@ -1,5 +1,312 @@
 
- 
+<div style="margin-top: 100px;"></div> <!-- 5 lines -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding Three Dot Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4; /* Light background for contrast */
+        }
+        .menu-button {
+            position: fixed;
+            top: 5px; /* Adjusted to move higher */
+            left: 20px;
+            padding: 10px; /* Adjusted padding */
+            background-color: #007BFF; /* Button background color */
+            border: none;
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            font-size: 30px; /* Font size for dots */
+            color: white; /* Text color */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+        }
+        .menu-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: scale(1.1); /* Slightly larger on hover */
+        }
+        .dropdown {
+            display: none;
+            position: fixed;
+            top: 50px; /* Adjust dropdown position */
+            left: 20px;
+            border: 1px solid #ccc;
+            background-color: white; /* Dropdown background color */
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* Start hidden */
+            transition: opacity 0.3s ease, transform 0.3s ease; /* Slide in effect */
+            transform: translateY(-10px); /* Slide down effect */
+        }
+        .dropdown.show {
+            display: block; /* Show the dropdown */
+            opacity: 1; /* Make it visible */
+            transform: translateY(0); /* Slide down to position */
+        }
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        .dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="menu-button" onclick="toggleDropdown()">&#8230;</button>
+
+    <div class="dropdown" id="dropdownMenu">
+        <a href="#" onclick="profile()">Profile</a>
+        <a href="#" onclick="settings()">Settings</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.classList.toggle('show'); // Toggle the 'show' class for slide effect
+        }
+
+        // Hide dropdown when clicking outside of it
+        window.onclick = function(event) {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            if (!event.target.matches('.menu-button')) {
+                if (dropdownMenu.classList.contains('show')) {
+                    dropdownMenu.classList.remove('show'); // Remove 'show' class
+                }
+            }
+        }
+
+        // Functions for the menu options
+        function profile() {
+            alert('Profile clicked');
+            // Add your profile functionality here
+        }
+
+        function settings() {
+            alert('Settings clicked');
+            // Add your settings functionality here
+        }
+
+        function logout() {
+            alert('Logout clicked');
+            // Add your logout functionality here
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Button Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .profile-btn {
+            position: fixed;
+            top: 20px; /* Adjusted to move higher */
+            right: 30px; /* Adjusted to move further right */
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="profile-btn" onclick="location.href='profile.html';">Profile</button>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Option</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .profile-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container {
+            display: none;
+            margin-top: 50px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="profile-button" onclick="toggleForm()">Profile</button>
+
+    <div class="form-container" id="formContainer">
+        <h2>Profile Settings</h2>
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <button onclick="saveName()">Save</button>
+        <p id="message" style="color: green;"></p>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const formContainer = document.getElementById('formContainer');
+            formContainer.style.display = formContainer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function saveName() {
+            const name = document.getElementById('name').value;
+            if (name) {
+                // Save name in local storage
+                localStorage.setItem('userName', name);
+                document.getElementById('message').innerText = 'Name saved successfully!';
+                document.getElementById('name').value = ''; // Clear the input
+            } else {
+                alert('Please enter your name.');
+            }
+        }
+
+        // Load the name if already saved
+        window.onload = function() {
+            const savedName = localStorage.getItem('userName');
+            if (savedName) {
+                document.getElementById('message').innerText = 'Welcome back, ' + savedName + '!';
+            }
+        };
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Example</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .banner {
+            background-color: #4CAF50; /* Banner ka background color */
+            color: white; /* Text ka color */
+            text-align: center; /* Text center align */
+            padding: 20px; /* Padding */
+            font-size: 24px; /* Font size */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        Welcome to My Website! 
+    </div>
+
+</body>
+</html>
+
 
 
 <!DOCTYPE html>
@@ -20,7 +327,7 @@
 	
     <header>
     	
-        <h1>hey Welcome to My Website</h1>
+        
         <nav>
         	
             <ul>
@@ -51,7 +358,7 @@
 
 
 
-<h4> If you're looking to create a website or blog, feel free to reach out to me. I can assist you with everything from design to content creation at every step. You’ll get help in crafting a unique and attractive website or blog tailored to your thoughts and needs. Whether you need a basic setup or advanced features, I'm here to help you every step of the way. Just send me a message, and let’s get started!</h4>
+<h4> If you're looking to create a website or blog, feel free to reach out to me. I can assist you with everything from design to content creation at every step. You’ll get help in crafting a unique and attractive website or blog tailored to your thoughts and needs. Whether you need a basic setup or advanced features, I'm here to help you every step of the way. Just send me a message, and is get started!</h4>
 
 
 
@@ -182,7 +489,7 @@ No part of this website may be copied or used without permission. For any questi
 
 
     
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -209,7 +516,7 @@ No part of this website may be copied or used without permission. For any questi
 
 
 
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -233,3 +540,222 @@ No part of this website may be copied or used without permission. For any questi
     </script>
 </body>
 </html>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; object-src 'none';">
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Feature</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        #chatBox {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            z-index: 1000;
+        }
+        #messages {
+            padding: 10px;
+            height: 330px;
+            overflow-y: auto;
+        }
+        #inputArea {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            background-color: #333;
+        }
+        #userInput {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            background-color: #444;
+            color: white;
+        }
+        #sendButton {
+            background-color: #444;
+            border: none;
+            color: white;
+            padding: 10px;
+            margin-left: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .message {
+            margin: 5px 0;
+        }
+        .bot {
+            color: blue;
+        }
+        .user {
+            color: green;
+            text-align: right;
+        }
+        #toggleChat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <button id="toggleChat">💬</button>
+
+    <div id="chatBox">
+        <div id="messages"></div>
+        <div id="inputArea">
+            <input type="text" id="userInput" placeholder="Message Pithoragarh Bot" />
+            <button id="sendButton">⬆️</button>
+        </div>
+    </div>
+
+    <script>
+        const toggleChat = document.getElementById('toggleChat');
+        const chatBox = document.getElementById('chatBox');
+        const messages = document.getElementById('messages');
+        const userInput = document.getElementById('userInput');
+        const sendButton = document.getElementById('sendButton');
+
+        toggleChat.addEventListener('click', () => {
+            chatBox.style.display = chatBox.style.display === 'none' ? 'block' : 'none';
+        });
+
+        sendButton.addEventListener('click', () => {
+            const userMessage = userInput.value;
+            if (userMessage.trim() !== '') {
+                addMessage(userMessage, 'user');
+                userInput.value = '';
+                getBotResponse(userMessage);
+            }
+        });
+
+        userInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+
+        function addMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender);
+            messageElement.textContent = message;
+            messages.appendChild(messageElement);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function getBotResponse(userMessage) {
+            let botMessage;
+            const lowerMessage = userMessage.toLowerCase();
+
+            switch (lowerMessage) {
+                case 'kaisa hai':
+                    botMessage = "mai badiya bhai tu bta, ho gya khana pina?";
+                    break;
+                case 'hi':
+                    botMessage = "Hi! How can I assist you?";
+                    break;
+                case 'mai badiya':
+                    botMessage = "Suna ke, kya chal raha hai?";
+                    break;
+                case 'help':
+                    botMessage = "Main yahan hoon madad ke liye! Aapko kya help chahiye?";
+                    break;
+                case 'contact':
+                    botMessage = "You can contact me at: akashaychouhan0@gmail.com";
+                    break;
+                case 'customer care':
+                    botMessage = "For customer care, please call: @_oye_akshu__";
+                    break;
+                case 'about':
+                    botMessage = "This is a simple chatbot demo.";
+                    break;
+                case 'instagram id':
+                    botMessage = "Instagram ID: @_oye_akshu__";
+                    break;
+                case 'owner name':
+                    botMessage = "Owner name: Akashay Chouhan (Contact: akashaychouhan0@gmail.com)";
+                    break;
+                default:
+                    if (lowerMessage.includes('pithoragarh kaha hai')) {
+                        botMessage = "Pithoragarh Uttarakhand rajya ke kumaon kshetra mein sthit hai.";
+                    } else if (lowerMessage.includes('chhota kashmir')) {
+                        botMessage = "Pithoragarh apni sundar ghatiyon ke liye 'Chhota Kashmir' kaha jata hai.";
+                    } else if (lowerMessage.includes('itihas')) {
+                        botMessage = "Pithoragarh ka itihas Chand rajvansh ke adheen tha aur British rule mein yah shahar bana.";
+                    } else if (lowerMessage.includes('paryatan sthal')) {
+                        botMessage = "Pithoragarh mein Chandak Hill, Thal Kedar, aur Askot Sanctuary jaise prasidh sthal hain.";
+                    } else if (lowerMessage.includes('utsav')) {
+                        botMessage = "Pithoragarh mein Makar Sankranti, Nandadevi Mela aur Jauljibi Mela bade utsav hain.";
+                    } else if (lowerMessage.includes('mausam')) {
+                        botMessage = "Pithoragarh ka mausam suhaana rehta hai, garmiyon mein thanda aur sardiyon mein acchi thand padti hai.";
+                    } else if (lowerMessage.includes('sabse ucha sthal')) {
+                        botMessage = "Chandak Parvat Pithoragarh ka sabse ucha sthal hai.";
+                    } else if (lowerMessage.includes('arthik kriya')) {
+                        botMessage = "Pithoragarh ki arthvyavastha ka mukhya aadhar krishi, paryatan aur sena mein bharti hai.";
+                    } else if (lowerMessage.includes('bhasha')) {
+                        botMessage = "Pithoragarh ke log Hindi aur Kumaoni bhasha bolte hain.";
+                    } else if (lowerMessage.includes('aaspaas ke sthal')) {
+                        botMessage = "Pithoragarh ke aaspaas Munsiyari, Dharchula aur Jauljibi jaise sthal prasidh hain.";
+                    } else {
+                        botMessage = "Sorry, muje abhi adhik jankari nahi hai Q ki mai ek taraf se testing project hu.";
+                    }
+                    break;
+            }
+            addMessage(botMessage, 'bot');
+        }
+    </script>
+
+</body>
+</html>
+<meta charset="UTF-8">
