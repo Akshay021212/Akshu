@@ -1,26 +1,43 @@
-<meta name="generator" content="WordPress <?php bloginfo('version'); ?>"
-
-
-<meta name="google-site-verification" content="HpNjF3dHyYEhFS2Yc3bF4V7k4cXeLWbWlxVtHgsaABs" />
-<div style="margin-top: 50px;"></div> <!-- 2.5lines -->
-
-
-
-
-
-
-
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banner Example</title>
+    <title>Sequential Pop-Up Example</title>
     <style>
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Centering text */
         }
+
+        .popup {
+            opacity: 0; /* Start invisible */
+            transform: scale(0); /* Start small */
+            transition: opacity 0.7s ease, transform 0.7s ease; /* Transition effects */
+            margin: 20px 0; /* Space between elements */
+        }
+
+        .popup.visible {
+            opacity: 1; /* Fully visible */
+            transform: scale(1); /* Scale to original size */
+        }
+
+        img {
+            width: 100%; /* Image ka width 100% rakhe */
+            height: auto; /* Height auto rakhe */
+        }
+
+        header, footer {
+            background: #f8f8f8;
+            padding: 10px 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
         .banner {
             background-color: #4CAF50; /* Banner ka background color */
             color: white; /* Text ka color */
@@ -31,482 +48,64 @@
     </style>
 </head>
 <body>
-
-    <div class="banner">
-        Welcome to My Website! 
-    </div>
-
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-	
-    <meta charset="UTF-8">
-    	
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>website maker </title>
-    
-    <link rel="stylesheet" href="style.css">
-    	
-    
-</head>
-
-<body>
-	
     <header>
-    	
-        
         <nav>
-        	
             <ul>
-            	
-        
-
-    
-                     
-                     
-                     
-         
+                <!-- Navigation items -->
             </ul>
         </nav>
     </header>
+    
+    <!-- Banner Section -->
+    <div class="banner popup" id="banner">Welcome to My Website!</div>
+
     <main>
-    </h1>
-    <h1>if you want to make website contact me.!</h1>
+        <!-- First Section -->
+        <h1 class="popup" id="heading1">If you want to make a website, contact me!</h1>
+        <h4 class="popup" id="para1">
+            If you're looking to create a website or blog, feel free to reach out to me. I can assist you with everything from design to content creation at every step.
+        </h4>
+        <img src="https://i.postimg.cc/FzLyNNcq/web-developer-security.jpg" alt="web-developer-security" class="popup" id="image1">
+
+        <!-- Second Section -->
+        <h1 class="popup" id="heading2">Welcome to My HTML Project</h1>
+        <p class="popup" id="para2">
+            I am currently working on creating a file using HTML. This project allows me to explore various HTML elements and how they function together to create a web page.
+        </p>
+        <img src="https://i.postimg.cc/sg4FBCdN/web-developer-html.jpg" alt="web-developer-html" class="popup" id="image2">
         
-        
-        <p>contact</p>
+        <h2 class="popup" id="heading3">If you want to make a web page in any other language, then contact me.</h2>
+        <img src="https://i.postimg.cc/wvPXC7tL/web-developer-multilang.jpg" alt="web-developer-multilang" class="popup" id="image3">
     </main>
+    
     <footer>
-        
+        <!-- Footer content -->
     </footer>
-</body>
 
-
-
-
-
-<h4> If you're looking to create a website or blog, feel free to reach out to me. I can assist you with everything from design to content creation at every step. You’ll get help in crafting a unique and attractive website or blog tailored to your thoughts and needs. Whether you need a basic setup or advanced features, I'm here to help you every step of the way. Just send me a message, and is get started!</h4>
-
-
-
-	
-
-
-
-
-
-
-
-<img src="https://i.postimg.cc/FzLyNNcq/web-developer-security.jpg" alt="web-developer-security" style="width: 100%; height: auto;">
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My HTML Project</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        p {
-            font-size: 16px;
-            color: #333;
-        }
-    </style>
-</head>
-<body>
-
-
-
-
-
-
-
-
-    <h1>Welcome to My HTML Project</h1>
-    <p>I am currently working on creating a file using HTML. This project allows me to explore various HTML elements and how they function together to create a web page. By learning HTML, I aim to enhance my skills in web development and create engaging content for users. This file will serve as a foundation for my future projects and help me understand the basics of web design.
-    </p>
-</body>
-</html>
-
-
-
-	<img src="https://i.postimg.cc/sg4FBCdN/web-developer-html.jpg" alt="web-developer-html" style="width: 100%; height: auto;">
-
-
-
-
-
-	
-
-
-
-
-
-
-<h2>If you want to make a web page in any other language then contact me.</h2>
-
-
-
-
-
-
-
-<img src="https://i.postimg.cc/wvPXC7tL/web-developer-multilang.jpg" alt="web-developer-multilang" style="width: 100%; height: auto;">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comment Box</title>
-    <style>
-        /* General Styling */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
-            padding: 15px;
-            color: #333;
-        }
-        h2, h3 {
-            color: #444;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            background-color: #fff;
-        }
-        button {
-            padding: 8px 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Comment Box Styling */
-        .comment-box {
-            background-color: white;
-            padding: 12px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        .comment-box strong {
-            display: inline-block;
-            margin-bottom: 5px;
-            color: #007bff;
-        }
-        .comment-box p {
-            margin: 4px 0;
-            font-size: 14px;
-        }
-
-        /* Admin Badge */
-        .admin-badge {
-            background-color: #007bff;
-            color: white;
-            font-size: 10px;
-            padding: 3px 6px;
-            border-radius: 3px;
-            margin-left: 5px;
-        }
-
-        /* Admin Actions */
-        .admin-actions {
-            color: #ff4d4d;
-            font-size: 12px;
-            cursor: pointer;
-            margin-left: 5px;
-        }
-        .admin-actions:hover {
-            text-decoration: underline;
-        }
-
-        /* Show More Button */
-        #showMoreBtn {
-            background-color: #28a745;
-            padding: 10px;
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        #showMoreBtn:hover {
-            background-color: #218838;
-        }
-
-        /* Admin Panel */
-        .admin-panel {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border: 1px solid #ddd;
-            margin-bottom: 20px;
-            border-radius: 6px;
-        }
-
-        /* Reply Box */
-        .reply-box {
-            margin-top: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-    </style>
-</head>
-<body>
-
-<!-- Admin Access Section -->
-<div class="admin-panel">
-    <h3>Admin Access</h3>
-    <input type="password" id="adminPassword" placeholder="Admin Password">
-    <button onclick="enableAdmin()">Enable Admin</button>
-    <input type="text" id="adminNameInput" placeholder="Change Admin Name" style="display:none;">
-    <button id="changeAdminNameBtn" style="display:none;" onclick="changeAdminName()">Change Name</button>
-</div>
-
-<!-- Leave a Comment Section -->
-<h2>Leave a Comment</h2>
-<input type="text" id="nameInput" placeholder="Enter your name">
-<textarea id="commentInput" rows="4" placeholder="Write your comment..."></textarea>
-<button onclick="addComment()">Submit</button>
-
-<div id="comments"></div>
-
-<!-- Show More Button -->
-<button id="showMoreBtn" onclick="showMoreComments()" style="display:none;">Show More Comments</button>
-
-<script>
-    var isAdmin = false;  // Flag for admin mode
-    var commentLimit = 2; // Limit how many comments to show initially
-    var commentsArray = [];
-    var savedName = localStorage.getItem('userName'); // Save name locally
-
-    // On window load, check if the name is saved and load comments
-    window.onload = function () {
-        if (savedName) {
-            document.getElementById('nameInput').value = savedName;
-            document.getElementById('nameInput').disabled = true;
-        }
-        loadComments();
-    }
-
-    // Function to enable admin mode
-    function enableAdmin() {
-        var password = document.getElementById('adminPassword').value;
-        if (password === "admin123") { // You can change the password here
-            isAdmin = true;
-            alert("Admin mode enabled");
-            document.getElementById('adminNameInput').style.display = 'block';
-            document.getElementById('changeAdminNameBtn').style.display = 'block';
-        } else {
-            alert("Incorrect password");
-        }
-        loadComments();
-    }
-
-    // Function to change admin name
-    function changeAdminName() {
-        var newAdminName = document.getElementById('adminNameInput').value;
-        if (newAdminName) {
-            savedName = newAdminName;
-            localStorage.setItem('userName', newAdminName);
-            document.getElementById('nameInput').value = newAdminName;
-            alert("Admin name changed to " + newAdminName);
-        } else {
-            alert("Please enter a name");
-        }
-    }
-
-    // Function to add a comment
-    function addComment() {
-        var name = document.getElementById('nameInput').value;
-        var comment = document.getElementById('commentInput').value;
-
-        if (!name || !comment) {
-            alert("Please enter both name and comment");
-            return;
-        }
-
-        // Save name to local storage if not already saved
-        if (!savedName) {
-            localStorage.setItem('userName', name);
-            savedName = name;
-            document.getElementById('nameInput').disabled = true;
-        }
-
-        var newComment = {
-            name: name,
-            comment: comment,
-            isAdmin: isAdmin,
-            replies: [],
-            timestamp: new Date().toLocaleString()
+    <script>
+        // Sequential pop-up effect for the elements
+        window.onload = function() {
+            const elements = [
+                document.getElementById('banner'),
+                document.getElementById('heading1'),
+                document.getElementById('para1'),
+                document.getElementById('image1'),
+                document.getElementById('heading2'),
+                document.getElementById('para2'),
+                document.getElementById('image2'),
+                document.getElementById('heading3'),
+                document.getElementById('image3')
+            ];
+
+            let delay = 0;
+            elements.forEach(function(el, index) {
+                setTimeout(function() {
+                    el.classList.add('visible');
+                }, delay);
+                delay += 1000; // Increase the delay for each element
+            });
         };
-
-        commentsArray.unshift(newComment); // Add newest comment to the beginning
-        saveComments();
-        loadComments();
-    }
-
-    // Save comments to local storage
-    function saveComments() {
-        localStorage.setItem('comments', JSON.stringify(commentsArray));
-    }
-
-    // Load comments from local storage
-    function loadComments() {
-        var storedComments = localStorage.getItem('comments');
-        if (storedComments) {
-            commentsArray = JSON.parse(storedComments);
-        }
-
-        var commentsDiv = document.getElementById('comments');
-        commentsDiv.innerHTML = '';
-
-        var limit = isAdmin ? commentsArray.length : commentLimit;
-        for (var i = 0; i < Math.min(limit, commentsArray.length); i++) {
-            var comment = commentsArray[i];
-            var commentHtml = `<div class="comment-box">
-                <strong>${comment.name}</strong> ${comment.isAdmin ? '<span class="admin-badge">Admin</span>' : ''}
-                <p id="comment-${i}">${comment.comment}</p>
-                <small>${comment.timestamp}</small>`;
-
-            // If the user is admin, show delete and edit options
-            if (isAdmin) {
-                commentHtml += `<span class="admin-actions" onclick="deleteComment(${i})">Delete</span> |
-                                <span class="admin-actions" onclick="editComment(${i})">Edit</span>`;
-            }
-
-            // Reply button
-            commentHtml += `<div>
-                <button onclick="showReplyBox(${i})">Reply</button>
-                <div id="reply-box-${i}" class="reply-box" style="display:none;">
-                    <textarea id="reply-input-${i}" rows="2" placeholder="Write a reply..."></textarea>
-                    <button onclick="addReply(${i})">Submit Reply</button>
-                </div>
-            </div>`;
-
-            // Display replies if any
-            if (comment.replies.length > 0) {
-                commentHtml += '<div class="replies">';
-                comment.replies.forEach((reply) => {
-                    commentHtml += `<div class="comment-box">
-                        <strong>${reply.name}</strong>
-                        <p>${reply.comment}</p>
-                        <small>${reply.timestamp}</small>
-                    </div>`;
-                });
-                commentHtml += '</div>';
-            }
-
-            commentHtml += '</div>';
-            commentsDiv.innerHTML += commentHtml;
-        }
-
-        // Hide 'Show More' button if all comments are displayed
-        document.getElementById('showMoreBtn').style.display = commentsArray.length > commentLimit ? 'block' : 'none';
-    }
-
-    // Function to delete a comment
-    function deleteComment(index) {
-        if (isAdmin) {
-            commentsArray.splice(index, 1);
-            saveComments();
-            loadComments();
-        }
-    }
-
-    // Function to edit a comment
-    function editComment(index) {
-        if (isAdmin) {
-            var newComment = prompt("Edit your comment:", commentsArray[index].comment);
-            if (newComment) {
-                commentsArray[index].comment = newComment;
-                saveComments();
-                loadComments();
-            }
-        }
-    }
-
-    // Function to add a reply
-    function addReply(index) {
-        var replyInput = document.getElementById(`reply-input-${index}`);
-        var reply = replyInput.value;
-
-        if (!reply) {
-            alert("Please enter a reply");
-            return;
-        }
-
-        var newReply = {
-            name: savedName,
-            comment: reply,
-            timestamp: new Date().toLocaleString()
-        };
-
-        commentsArray[index].replies.push(newReply); // Add reply to the comment's replies
-        saveComments();
-        loadComments();
-    }
-
-    // Function to show the reply box
-    function showReplyBox(index) {
-        var replyBox = document.getElementById(`reply-box-${index}`);
-        replyBox.style.display = replyBox.style.display === 'none' ? 'block' : 'none';
-    }
-
-    // Function to show more comments
-    function showMoreComments() {
-        commentLimit += 2; // Increase limit by 2
-        loadComments();
-    }
-</script>
+    </script>
 </body>
 </html>
 
@@ -516,12 +115,9 @@
 
 
 
-
-
-
-<p>© [2024] [website maker]. All rights reserved.
+<h4>© [2024] [website maker]. All rights reserved.
 No part of this website may be copied or used without permission. For any questions, feel free to contact me 
- [@akashaychouhan0@gmail.com]<p>
+ [@akashaychouhan0@gmail.com]</h4>
 
 
 
@@ -843,3 +439,4 @@ No part of this website may be copied or used without permission. For any questi
 </body>
 </html>
 <meta charset="UTF-8">
+
