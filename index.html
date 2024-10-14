@@ -182,6 +182,13 @@
 
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -267,6 +274,7 @@
             background-color: #28a745;
             padding: 10px;
             width: 100%;
+            margin-top: 10px;
         }
 
         #showMoreBtn:hover {
@@ -281,6 +289,15 @@
             margin-bottom: 20px;
             border-radius: 6px;
         }
+
+        /* Reply Box */
+        .reply-box {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
     </style>
 </head>
 <body>
@@ -290,6 +307,8 @@
     <h3>Admin Access</h3>
     <input type="password" id="adminPassword" placeholder="Admin Password">
     <button onclick="enableAdmin()">Enable Admin</button>
+    <input type="text" id="adminNameInput" placeholder="Change Admin Name" style="display:none;">
+    <button id="changeAdminNameBtn" style="display:none;" onclick="changeAdminName()">Change Name</button>
 </div>
 
 <!-- Leave a Comment Section -->
@@ -301,7 +320,7 @@
 <div id="comments"></div>
 
 <!-- Show More Button -->
-<button id="showMoreBtn" onclick="showMoreComments()">Show More Comments</button>
+<button id="showMoreBtn" onclick="showMoreComments()" style="display:none;">Show More Comments</button>
 
 <script>
     var isAdmin = false;  // Flag for admin mode
@@ -324,10 +343,25 @@
         if (password === "admin123") { // You can change the password here
             isAdmin = true;
             alert("Admin mode enabled");
+            document.getElementById('adminNameInput').style.display = 'block';
+            document.getElementById('changeAdminNameBtn').style.display = 'block';
         } else {
             alert("Incorrect password");
         }
         loadComments();
+    }
+
+    // Function to change admin name
+    function changeAdminName() {
+        var newAdminName = document.getElementById('adminNameInput').value;
+        if (newAdminName) {
+            savedName = newAdminName;
+            localStorage.setItem('userName', newAdminName);
+            document.getElementById('nameInput').value = newAdminName;
+            alert("Admin name changed to " + newAdminName);
+        } else {
+            alert("Please enter a name");
+        }
     }
 
     // Function to add a comment
@@ -351,6 +385,7 @@
             name: name,
             comment: comment,
             isAdmin: isAdmin,
+            replies: [],
             timestamp: new Date().toLocaleString()
         };
 
@@ -379,13 +414,35 @@
             var comment = commentsArray[i];
             var commentHtml = `<div class="comment-box">
                 <strong>${comment.name}</strong> ${comment.isAdmin ? '<span class="admin-badge">Admin</span>' : ''}
-                <p>${comment.comment}</p>
+                <p id="comment-${i}">${comment.comment}</p>
                 <small>${comment.timestamp}</small>`;
 
-            // If the user is admin, show delete and reply options
+            // If the user is admin, show delete and edit options
             if (isAdmin) {
                 commentHtml += `<span class="admin-actions" onclick="deleteComment(${i})">Delete</span> |
-                                <span class="admin-actions" onclick="replyToComment('${comment.name}')">Reply</span>`;
+                                <span class="admin-actions" onclick="editComment(${i})">Edit</span>`;
+            }
+
+            // Reply button
+            commentHtml += `<div>
+                <button onclick="showReplyBox(${i})">Reply</button>
+                <div id="reply-box-${i}" class="reply-box" style="display:none;">
+                    <textarea id="reply-input-${i}" rows="2" placeholder="Write a reply..."></textarea>
+                    <button onclick="addReply(${i})">Submit Reply</button>
+                </div>
+            </div>`;
+
+            // Display replies if any
+            if (comment.replies.length > 0) {
+                commentHtml += '<div class="replies">';
+                comment.replies.forEach((reply) => {
+                    commentHtml += `<div class="comment-box">
+                        <strong>${reply.name}</strong>
+                        <p>${reply.comment}</p>
+                        <small>${reply.timestamp}</small>
+                    </div>`;
+                });
+                commentHtml += '</div>';
             }
 
             commentHtml += '</div>';
@@ -405,29 +462,53 @@
         }
     }
 
-    // Function to reply to a comment
-    function replyToComment(name) {
-        document.getElementById('commentInput').value = "@" + name + " ";
+    // Function to edit a comment
+    function editComment(index) {
+        if (isAdmin) {
+            var newComment = prompt("Edit your comment:", commentsArray[index].comment);
+            if (newComment) {
+                commentsArray[index].comment = newComment;
+                saveComments();
+                loadComments();
+            }
+        }
     }
 
-    // Show more comments when the button is clicked
+    // Function to add a reply
+    function addReply(index) {
+        var replyInput = document.getElementById(`reply-input-${index}`);
+        var reply = replyInput.value;
+
+        if (!reply) {
+            alert("Please enter a reply");
+            return;
+        }
+
+        var newReply = {
+            name: savedName,
+            comment: reply,
+            timestamp: new Date().toLocaleString()
+        };
+
+        commentsArray[index].replies.push(newReply); // Add reply to the comment's replies
+        saveComments();
+        loadComments();
+    }
+
+    // Function to show the reply box
+    function showReplyBox(index) {
+        var replyBox = document.getElementById(`reply-box-${index}`);
+        replyBox.style.display = replyBox.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Function to show more comments
     function showMoreComments() {
-        commentLimit += 2;
+        commentLimit += 2; // Increase limit by 2
         loadComments();
     }
 </script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -762,4 +843,3 @@ No part of this website may be copied or used without permission. For any questi
 </body>
 </html>
 <meta charset="UTF-8">
-
