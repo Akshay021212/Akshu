@@ -1,0 +1,580 @@
+<title> akshu </title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+
+<meta name="google-site-verification" content="HpNjF3dHyYEhFS2Yc3bF4V7k4cXeLWbWlxVtHgsaABs" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Banner</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .welcome-banner {
+            background-color: black; /* Background color */
+            color: white; /* Default text color */
+            padding: 20px;
+            text-align: center; /* Center the text */
+            font-size: 45px; /* Increased font size for the welcome text */
+        }
+        .welcome-banner .welcome {
+            color: white; /* "welc" color */
+        }
+        .welcome-banner .ome {
+            color: red; /* "ome" color */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Welcome Banner -->
+    <div class="welcome-banner">
+        <span class="welcome">welc</span><span class="ome">ome</span>
+    </div>
+
+</body>
+</html>
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Banner Slider</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 500px; /* Adjusted for your required size */
+            height: 80px; /* Adjusted height */
+            margin: auto;
+            overflow: hidden; /* Ensure overflow is hidden */
+        }
+        .slides {
+            display: flex; /* Use flexbox to arrange slides horizontally */
+            transition: transform 0.5s ease; /* Smooth transition for sliding */
+        }
+        .slides img {
+            width: 100%;
+            height: auto; /* Set to auto for better display */
+        }
+
+        /* Style for arrows */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 10;
+        }
+        .arrow.left {
+            left: 10px;
+        }
+        .arrow.right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider">
+    <div class="slides" id="slides">
+        <img src="https://i.postimg.cc/HkGqyWM9/caspar-camille-rubin-f-Pkv-U7-RDm-Co-unsplash.jpg" alt="Image 1">
+        <img src="https://i.postimg.cc/s2ny7dsf/chris-ried-ieic5-Tq8-YMk-unsplash.jpg" alt="Image 2">
+        <img src="https://i.postimg.cc/kGzkwqp9/IMG-20241015-152445.jpg" alt="Image 3">
+        <img src="https://i.postimg.cc/qv89XfXV/luca-bravo-XJXWbf-So2f0-unsplash.jpg" alt="Image 4">
+    </div>
+    <button class="arrow left" onclick="prevImage()">&#10094;</button>
+    <button class="arrow right" onclick="nextImage()">&#10095;</button>
+</div>
+
+<script>
+    let currentIndex = 0;
+    const slides = document.getElementById('slides');
+    const images = document.querySelectorAll('.slides img');
+
+    function showImage(index) {
+        const offset = index * -100; // Calculate offset for sliding effect
+        slides.style.transform = `translateX(${offset}%)`;
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    }
+
+    setInterval(nextImage, 5000); // Change image every 5 seconds
+    showImage(currentIndex); // Show the first image
+</script>
+
+</body>
+</html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequential Pop-Up Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Centering text */
+        }
+
+        .popup {
+            opacity: 0; /* Start invisible */
+            transform: scale(0); /* Start small */
+            transition: opacity 0.7s ease, transform 0.7s ease; /* Transition effects */
+            margin: 20px 0; /* Space between elements */
+        }
+
+        .popup.visible {
+            opacity: 1; /* Fully visible */
+            transform: scale(1); /* Scale to original size */
+        }
+
+        img {
+            width: 100%; /* Image ka width 100% rakhe */
+            height: auto; /* Height auto rakhe */
+        }
+
+        header, footer {
+            background: #f8f8f8;
+            padding: 10px 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .banner {
+            background-color: #4CAF50; /* Banner ka background color */
+            color: white; /* Text ka color */
+            text-align: center; /* Text center align */
+            padding: 20px; /* Padding */
+            font-size: 24px; /* Font size */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- Navigation items -->
+            </ul>
+        </nav>
+    </header>
+    
+
+    <main>
+        <!-- First Section -->
+        <h1 class="popup" id="heading1">If you want to make a website, contact me!</h1>
+        <h4 class="popup" id="para1">
+            If you're looking to create a website or blog, feel free to reach out to me. I can assist you with everything from design to content creation at every step.
+        </h4>
+        <img src="https://i.postimg.cc/FzLyNNcq/web-developer-security.jpg" alt="web-developer-security" class="popup" id="image1">
+
+        <!-- Second Section -->
+        <h1 class="popup" id="heading2">Welcome to My HTML Project</h1>
+        <p class="popup" id="para2">
+            I am currently working on creating a file using HTML. This project allows me to explore various HTML elements and how they function together to create a web page.
+        </p>
+        <img src="https://i.postimg.cc/sg4FBCdN/web-developer-html.jpg" alt="web-developer-html" class="popup" id="image2">
+        
+        <h2 class="popup" id="heading3">If you want to make a web page in any other language, then contact me.</h2>
+        <img src="https://i.postimg.cc/wvPXC7tL/web-developer-multilang.jpg" alt="web-developer-multilang" class="popup" id="image3">
+    </main>
+    
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <script>
+        // Sequential pop-up effect for the elements
+        window.onload = function() {
+            const elements = [
+                document.getElementById(''),
+                document.getElementById('heading1'),
+                document.getElementById('para1'),
+                document.getElementById('image1'),
+                document.getElementById('heading2'),
+                document.getElementById('para2'),
+                document.getElementById('image2'),
+                document.getElementById('heading3'),
+                document.getElementById('image3')
+            ];
+
+            let delay = 0;
+            elements.forEach(function(el, index) {
+                setTimeout(function() {
+                    el.classList.add('visible');
+                }, delay);
+                delay += 1000; // Increase the delay for each element
+            });
+        };
+    </script>
+</body>
+</html>
+
+
+
+<h1>
+    <a href="https://postimg.cc/2LRpS8gk" target="_blank" style="display: inline-block;">
+        <img src="https://i.postimg.cc/rszqgDJr/IMG-20241013-232136.jpg" alt="Image" style="width: 25px; height: auto; margin-top: 10px;">
+    </a>
+    <a href="https://www.instagram.com/_oye_akshu__?igsh=ZnZwc250cTkzdzU2" target="_blank" style="display: inline-block; margin-left: 10px;">Instagram</a>
+</h1>
+
+<div style="height: 1em;"></div>
+
+<h1>
+    <a href="https://postimages.org/" target="_blank" style="display: inline-block;">
+        <img src="https://i.postimg.cc/J4zvSwjR/IMG-20241014-004546.png" alt="IMG-20241014-004546" style="width: 25px; height: auto; margin-top: 10px;">
+    </a>
+    <a href="https://youtube.com/@akshugamer05?si=Sn4dsTksetWlJlHd" target="_blank" style="display: inline-block; margin-left: 10px;">YouTube</a>
+</h1>
+
+
+
+
+     
+    <div style="height: 1em;"></div>
+ 
+
+
+
+
+<h1>
+    <a href="https://postimages.org/" target="_blank" style="display: inline-block;">
+        <img src="https://i.postimg.cc/pLyRH5bc/IMG-20241013-235441.png" alt="IMG-20241013-235441" style="width: 25px; height: auto; margin-top: 10px;">
+    </a>
+    <a href="https://wa.me/7467043993" target="_blank" style="display: inline-block; margin-left: 10px;">WhatsApp</a>
+</h1>
+
+
+
+    <div style="height: 1em;"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Button Example</title>
+</head>
+<body>
+
+    <h1>Support Us!</h1>
+    <div style="height: 1em;"></div>
+    <!-- Donate Button -->
+    <a href="upi://pay?pa=7467043993@fam&pn=YourName&mc=YOUR_MC&tid=YOUR_TID&amount=1&cu=INR&url=https://yourwebsite.com" target="_blank" style="text-decoration: none;">
+        <button style="padding: 10px 20px; font-size: 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">
+            ❤️‍🔥
+        </button>
+    </a>
+
+</body>
+</html>
+
+
+
+
+
+<div style="height: 1em;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Feature</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        #chatBox {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            z-index: 1000;
+        }
+        #messages {
+            padding: 10px;
+            height: 330px;
+            overflow-y: auto;
+        }
+        #inputArea {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            background-color: #333;
+        }
+        #userInput {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            background-color: #444;
+            color: white;
+        }
+        #sendButton {
+            background-color: #444;
+            border: none;
+            color: white;
+            padding: 10px;
+            margin-left: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .message {
+            margin: 5px 0;
+        }
+        .bot {
+            color: blue;
+        }
+        .user {
+            color: green;
+            text-align: right;
+        }
+        #toggleChat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <button id="toggleChat">💬</button>
+
+    <div id="chatBox">
+        <div id="messages"></div>
+        <div id="inputArea">
+            <input type="text" id="userInput" placeholder="Message Pithoragarh Bot" />
+            <button id="sendButton">⬆️</button>
+        </div>
+    </div>
+
+    <script>
+        const toggleChat = document.getElementById('toggleChat');
+        const chatBox = document.getElementById('chatBox');
+        const messages = document.getElementById('messages');
+        const userInput = document.getElementById('userInput');
+        const sendButton = document.getElementById('sendButton');
+
+        toggleChat.addEventListener('click', () => {
+            chatBox.style.display = chatBox.style.display === 'none' ? 'block' : 'none';
+        });
+
+        sendButton.addEventListener('click', () => {
+            const userMessage = userInput.value;
+            if (userMessage.trim() !== '') {
+                addMessage(userMessage, 'user');
+                userInput.value = '';
+                getBotResponse(userMessage);
+            }
+        });
+
+        userInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+
+        function addMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender);
+            messageElement.textContent = message;
+            messages.appendChild(messageElement);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function getBotResponse(userMessage) {
+            let botMessage;
+            const lowerMessage = userMessage.toLowerCase();
+
+            switch (lowerMessage) {
+                case 'kaisa hai':
+                    botMessage = "mai badiya bhai tu bta, ho gya khana pina?";
+                    break;
+                case 'hi':
+                    botMessage = "Hi! How can I assist you?";
+                    break;
+                case 'mai badiya':
+                    botMessage = "Suna ke, kya chal raha hai?";
+                    break;
+                case 'help':
+                    botMessage = "Main yahan hoon madad ke liye! Aapko kya help chahiye?";
+                    break;
+                case 'contact':
+                    botMessage = "You can contact me at: akashaychouhan0@gmail.com";
+                    break;
+                case 'customer care':
+                    botMessage = "For customer care, please call: @_oye_akshu__";
+                    break;
+                case 'about':
+                    botMessage = "This is a simple chatbot demo.";
+                    break;
+                case 'instagram id':
+                    botMessage = "Instagram ID: @_oye_akshu__";
+                    break;
+                case 'owner name':
+                    botMessage = "Owner name: Akashay Chouhan (Contact: akashaychouhan0@gmail.com)";
+                    break;
+                default:
+                    if (lowerMessage.includes('pithoragarh kaha hai')) {
+                        botMessage = "Pithoragarh Uttarakhand rajya ke kumaon kshetra mein sthit hai.";
+                    } else if (lowerMessage.includes('chhota kashmir')) {
+                        botMessage = "Pithoragarh apni sundar ghatiyon ke liye 'Chhota Kashmir' kaha jata hai.";
+                    } else if (lowerMessage.includes('jai shree ram')) {
+                        botMessage = "jai jai shree ram ❤️‍🔥 {sanatan he satya hai}.";
+                    } else if (lowerMessage.includes('paryatan sthal')) {
+                        botMessage = "Pithoragarh mein Chandak Hill, Thal Kedar, aur Askot Sanctuary jaise prasidh sthal hain.";
+                    } else if (lowerMessage.includes('utsav')) {
+                        botMessage = "Pithoragarh mein Makar Sankranti, Nandadevi Mela aur Jauljibi Mela bade utsav hain.";
+                    } else if (lowerMessage.includes('Jai shree ram')) {
+                        botMessage = "jai jai shree ram ❤️‍🔥 {sanatan he satya hai.";
+                    } else if (lowerMessage.includes('sabse ucha sthal')) {
+                        botMessage = "Chandak Parvat Pithoragarh ka sabse ucha sthal hai.";
+                    } else if (lowerMessage.includes('arthik kriya')) {
+                        botMessage = "Pithoragarh ki arthvyavastha ka mukhya aadhar krishi, paryatan aur sena mein bharti hai.";
+                    } else if (lowerMessage.includes('bhasha')) {
+                        botMessage = "Pithoragarh ke log Hindi aur Kumaoni bhasha bolte hain.";
+                    } else if (lowerMessage.includes('aaspaas ke sthal')) {
+                        botMessage = "Pithoragarh ke aaspaas Munsiyari, Dharchula aur Jauljibi jaise sthal prasidh hain.";
+                    } else {
+                        botMessage = "Sorry, muje abhi adhik jankari nahi hai Q ki mai ek taraf se testing project hu.";
+                    }
+                    break;
+            }
+            addMessage(botMessage, 'bot');
+        }
+    </script>
+
+</body>
+</html>
+<meta charset="UTF-8">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Full-Width Footer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .footer {
+            background-color: #0a0a0a; /* Darker black */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .footer h4, .footer p {
+            margin: 10px 0;
+        }
+        .footer h4 .highlight {
+            color: #FFD700; /* Gold color */
+        }
+        .footer h4 .email {
+            color: #00FF00; /* Lime green */
+        }
+        .footer p .thanks {
+            color: #1E90FF; /* Dodger blue */
+        }
+        .footer a {
+            color: cyan;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="footer">
+        <h4>© <span class="highlight">2024</span> <span class="highlight">website maker</span>. All rights reserved.<br>
+        No part of this website may be copied or used without permission. For any questions, feel free to contact me at 
+        <a href="mailto:akashaychouhan0@gmail.com" class="email">akashaychouhan0@gmail.com</a></h4>
+        <p>&copy; <span class="thanks">Thanks</span> for visiting my website.</p>
+        <p>#</p>
+    </div>
+
+</body>
+</html>
