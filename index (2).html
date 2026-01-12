@@ -37,7 +37,7 @@
 
     <!-- Welcome Banner -->
     <div class="welcome-banner">
-        <span class="welcome">welc</span><span class="ome">omé</span>
+        <span class="welcome">welc</span><span class="ome">ome</span>
     </div>
 
 </body>
@@ -241,6 +241,184 @@
     </script>
 </body>
 </html>
+
+
+<style>
+    /* Ultra Modern Glass Design */
+    .akshu-premium-box {
+        max-width: 450px;
+        margin: 50px auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 30px;
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 112, 243, 0.2);
+        border: 1px solid rgba(0, 112, 243, 0.1);
+        font-family: 'Inter', -apple-system, sans-serif;
+        text-align: center;
+    }
+
+    /* Top Accent Line */
+    .akshu-premium-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(90deg, #0070f3, #00c853, #0070f3);
+        background-size: 200% 100%;
+        animation: gradientMove 3s linear infinite;
+    }
+
+    @keyframes gradientMove {
+        0% { background-position: 100% 0%; }
+        100% { background-position: -100% 0%; }
+    }
+
+    .file-type-badge {
+        background: #0070f3;
+        color: white;
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    .file-title {
+        font-size: 24px;
+        font-weight: 800;
+        color: #1a1a1a;
+        margin-bottom: 10px;
+        letter-spacing: -0.5px;
+    }
+
+    .file-details {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 30px;
+        font-weight: 500;
+    }
+
+    /* Pro Button Design */
+    .pro-download-btn {
+        background: #1a1a1a;
+        color: white;
+        border: none;
+        padding: 18px 45px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 15px;
+        cursor: pointer;
+        width: 100%;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: block;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .pro-download-btn:hover {
+        background: #0070f3;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 112, 243, 0.3);
+    }
+
+    /* Sleek Loading Area */
+    .loading-wrapper {
+        display: none;
+        margin-top: 20px;
+    }
+
+    .bar-container {
+        width: 100%;
+        background: #f0f0f0;
+        height: 8px;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 15px;
+    }
+
+    .bar-inner {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #0070f3, #00d2ff);
+        border-radius: 20px;
+        transition: width 0.1s ease;
+    }
+
+    .status-msg {
+        font-size: 13px;
+        font-weight: 600;
+        color: #0070f3;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+</style>
+
+<div class="akshu-premium-box">
+    <div class="file-type-badge">System Application</div>
+    <div class="file-title">Coustom Flapppy Bird</div>
+    <div class="file-details">Version 1.0 • 31.92 MB • APK</div>
+    
+    <button class="pro-download-btn" id="proBtn" onclick="runProDownload()">
+        GET DOWNLOAD LINK
+    </button>
+
+    <div class="loading-wrapper" id="loadWrap">
+        <div class="bar-container">
+            <div class="bar-inner" id="innerBar"></div>
+        </div>
+        <div class="status-msg" id="statusMsg">Initializing...</div>
+    </div>
+</div>
+
+<script>
+    function runProDownload() {
+        const btn = document.getElementById('proBtn');
+        const wrap = document.getElementById('loadWrap');
+        const bar = document.getElementById('innerBar');
+        const msg = document.getElementById('statusMsg');
+        
+        const fileUrl = "https://www.mediafire.com/file/hzmm0nq48t60jew/_Coustom_Flapppy_Bird_19426308_%25281%2529.apk/file";
+
+        btn.style.display = 'none';
+        wrap.style.display = 'block';
+
+        let progress = 0;
+        const speed = 35; 
+        
+        const anim = setInterval(() => {
+            progress++;
+            bar.style.width = progress + "%";
+            msg.innerText = "Processing: " + progress + "%";
+
+            if(progress === 25) msg.innerText = "Securing Connection...";
+            if(progress === 50) msg.innerText = "Generating Token...";
+            if(progress === 85) msg.innerText = "Ready to Launch...";
+
+            if(progress >= 100) {
+                clearInterval(anim);
+                msg.innerText = "SUCCESSFUL REDIRECT";
+                msg.style.color = "#00c853";
+                
+                setTimeout(() => {
+                    window.open(fileUrl, '_blank');
+                    // Resetting for next time
+                    setTimeout(() => {
+                        btn.style.display = 'block';
+                        wrap.style.display = 'none';
+                        bar.style.width = "0%";
+                    }, 2000);
+                }, 800);
+            }
+        }, speed);
+    }
+</script>
+
 
 
 
@@ -568,6 +746,19 @@
 </head>
 <body>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="footer">
         <h4>© <span class="highlight">2024</span> <span class="highlight">website maker</span>. All rights reserved.<br>
         No part of this website may be copied or used without permission. For any questions, feel free to contact me at 
@@ -578,5 +769,6 @@
 
 </body>
 </html>
+
 
 
